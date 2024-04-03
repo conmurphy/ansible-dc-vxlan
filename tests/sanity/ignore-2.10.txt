@@ -1,8 +1,8 @@
-plugins/action/common/check_roles.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/common/nac_dc_validate.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/common/prepare_plugins/101_prep_global.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/common/prepare_plugins/103_prep_topology_switches.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/common/prepare_plugins/104_prep_fabric_overlay_services.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/common/prepare_plugins/105_prep_topology_interfaces.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/common/prepare_service_model.py:0:0: action plugin has no matching module to provide documentation
-plugins/action/dtc/add_device_check.py:0:0: action plugin has no matching module to provide documentation
+plugins/action/common/check_roles.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/common/nac_dc_validate.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/common/prepare_plugins/101_prep_global.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/common/prepare_plugins/103_prep_topology_switches.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/common/prepare_plugins/104_prep_fabric_overlay_services.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/common/prepare_plugins/105_prep_topology_interfaces.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/common/prepare_service_model.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/dtc/add_device_check.py action-plugin-docs # action plugin has no matching module to provide documentation
