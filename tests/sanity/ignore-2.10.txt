@@ -9,3 +9,4 @@ plugins/action/dtc/add_device_check.py action-plugin-docs # action plugin has no
 plugins/action/dtc/fabric_check.py action-plugin-docs # action plugin has no matching module to provide documentation
 plugins/action/dtc/vpc_pair_check.py action-plugin-docs # action plugin has no matching module to provide documentation
 plugins/action/dtd/prepare_service_model.py action-plugin-docs # action plugin has no matching module to provide documentation
+plugins/action/helper_functions.py action-plugin-docs # action plugin has no matching module to provide documentation
