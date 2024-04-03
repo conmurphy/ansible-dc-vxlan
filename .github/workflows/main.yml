@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         ansible: [2.10.17, 2.11.12, 2.12.10, 2.13.13, 2.14.15, 2.16.5]
-        python: ['3.10']
+        python: ['3.9']
     steps:
     - name: Set up Python 3.10.14
       uses: actions/setup-python@v1
