@@ -110,10 +110,14 @@ jobs:
         with:
           python-version: '3.10'
       
-      - name: Env
+      - name: pwd
         run: |
           pwd
-          ls
+      
+      - name: list contents
+        run: |
+          ll
+          cd .. && ll
 
       - name: Install dependencies
         run: |
