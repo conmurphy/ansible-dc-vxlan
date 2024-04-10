@@ -120,7 +120,7 @@ jobs:
           pip install ansible-core==2.16.5
 
       - name: list contents
-        run: ls /home/runner/.ansible/collections/ansible_collections
+        run: ls /home/runner/.ansible/
 
       - name: list contents
         run: ls /home/runner/.ansible/collections/ansible_collections/cisco
