@@ -123,6 +123,9 @@ jobs:
           SUPER_SECRET2: ${{ secrets.NDFC_IP }}
         run: echo "$SUPER_SECRET2"
 
+      - name: env secret
+        run: export SUPER_SECRET3=${{ secrets.NDFC_IP }}
+
       - name: env var
         env:
           TEST_VAR1: ${{ vars.NDFC_IP_VAR }}
@@ -132,6 +135,9 @@ jobs:
         env:
           TEST_VAR2: ${{ vars.NDFC_IP_VAR }}
         run: echo 'Hi ${{ env.TEST_VAR2 }}'
+
+      - name: env var
+        run: export TEST_VAR3=${{ vars.NDFC_IP_VAR }}
 
       - name: env
         run: env
