@@ -22,10 +22,7 @@ jobs:
     strategy:
       matrix:
         # ansible: [2.9.26, 2.10.17, 2.11.12, 2.12.10, 2.13.8, 2.14.2]
-        ansible:
-          - stable-2.10
-          - stable-2.15
-          - stable-2.16
+        ansible: [2.14.15, 2.16.5]
     steps:
     - name: Check out code
       uses: actions/checkout@v2
@@ -55,10 +52,7 @@ jobs:
     strategy:
       matrix:
         # ansible: [2.10.17, 2.11.12, 2.12.10, 2.13.13, 2.14.15, 2.16.5]
-        ansible:
-          - stable-2.10
-          - stable-2.15
-          - stable-2.16
+        ansible: [2.14.15, 2.16.5]
         python: ['3.10']
     steps:
     - name: Set up Python 3.10.14
