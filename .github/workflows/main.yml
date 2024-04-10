@@ -110,6 +110,12 @@ jobs:
       - name: env
         run: env
 
+      - name: secret test
+        run: echo ${{ secrets.NDFC_IP }}
+
+      - name: var test
+        run: echo ${{ vars.NDFC_IP_VAR }}
+
       - name: list contents
         run: ls 
       
