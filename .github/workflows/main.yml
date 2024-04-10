@@ -122,9 +122,8 @@ jobs:
       - name: list contents
         run: ls /home/runner/.ansible/
 
+      - name: Install the collection tarball
+        run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+
       - name: list contents
         run: ls /home/runner/.ansible/collections/ansible_collections/cisco
-
-      # - name: Install the collection tarball
-      #   run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
-
