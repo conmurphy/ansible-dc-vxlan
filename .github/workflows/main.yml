@@ -16,33 +16,33 @@ on:
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
 jobs:
-  build:
-    name: Build DC VXLAN collection
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # ansible: [2.9.26, 2.10.17, 2.11.12, 2.12.10, 2.13.8, 2.14.2]
-        ansible: [2.14.15, 2.16.5]
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+  # build:
+  #   name: Build DC VXLAN collection
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       # ansible: [2.9.26, 2.10.17, 2.11.12, 2.12.10, 2.13.8, 2.14.2]
+  #       ansible: [2.14.15, 2.16.5]
+  #   steps:
+  #   - name: Check out code
+  #     uses: actions/checkout@v2
     
-    - name: Set up Python 3.10.14
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.10.14
+  #   - name: Set up Python 3.10.14
+  #     uses: actions/setup-python@v1
+  #     with:
+  #       python-version: 3.10.14
 
-    - name: Install ansible-base (v${{ matrix.ansible }})
-      run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
+  #   - name: Install ansible-base (v${{ matrix.ansible }})
+  #     run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
 
-    - name: Build a DCNM collection tarball
-      run: ansible-galaxy collection build --output-path "${GITHUB_WORKSPACE}/.cache/collection-tarballs"
+  #   - name: Build a DCNM collection tarball
+  #     run: ansible-galaxy collection build --output-path "${GITHUB_WORKSPACE}/.cache/collection-tarballs"
 
-    - name: Store migrated collection artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: collection
-        path: .cache/collection-tarballs
+  #   - name: Store migrated collection artifacts
+  #     uses: actions/upload-artifact@v1
+  #     with:
+  #       name: collection
+  #       path: .cache/collection-tarballs
 
   # sanity:
   #   name: Sanity (Ⓐ${{ matrix.ansible }})
@@ -96,8 +96,8 @@ jobs:
 
   tests:
     name: Tests
-    needs:
-      - build
+    # needs:
+    #   - build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -115,13 +115,23 @@ jobs:
 
       - name: env secret
         env:
-          SUPER_SECRET: ${{ secrets.NDFC_IP }}
-        run: echo "$env:SUPER_SECRET"
+          SUPER_SECRET1: ${{ secrets.NDFC_IP }}
+        run: echo 'Hi ${{ env.SUPER_SECRET1 }}'
+
+      - name: env secret
+        env:
+          SUPER_SECRET2: ${{ secrets.NDFC_IP }}
+        run: echo "$SUPER_SECRET2"
 
       - name: env var
         env:
-          TEST_VAR: ${{ vars.NDFC_IP_VAR }}
-        run: echo "$env:TEST_VAR"
+          TEST_VAR1: ${{ vars.NDFC_IP_VAR }}
+        run: echo "$TEST_VAR1"
+      
+      - name: env var
+        env:
+          TEST_VAR2: ${{ vars.NDFC_IP_VAR }}
+        run: echo 'Hi ${{ env.TEST_VAR2 }}'
 
       - name: env
         run: env
