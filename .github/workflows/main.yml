@@ -115,9 +115,7 @@ jobs:
           pwd
       
       - name: list contents
-        run: |
-          ls
-          cd .. && ls
+        run: ls
 
       - name: Install dependencies
         run: |
