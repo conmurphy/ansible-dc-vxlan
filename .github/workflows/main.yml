@@ -113,9 +113,12 @@ jobs:
       - name: pwd
         run: |
           pwd
-      
+ 
       - name: list contents
-        run: ls
+        run: ls /home/runner/.ansible/collections/ansible_collections
+
+      - name: list contents
+        run: ls /home/runner/.ansible/collections/ansible_collections/cisco
 
       - name: Install dependencies
         run: |
