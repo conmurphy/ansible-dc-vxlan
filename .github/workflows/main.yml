@@ -60,10 +60,17 @@ jobs:
       with:
         python-version: 3.10.14
 
-    - name: Install dependencies
+    - name: Upgrade pip
       run: |
         pip install --upgrade pip
-        pip install iac-validate==0.2.5 iac-test==0.2.5
+
+    - name: Install iac-validate
+      run: |
+        pip install iac-validate
+
+    - name: Install iac-test
+      run: |
+        pip install iac-test
 
     - name: Install ansible-base (v${{ matrix.ansible }})
       run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
