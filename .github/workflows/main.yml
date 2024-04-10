@@ -107,14 +107,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: env
-        run: env
-
       - name: secret test
         run: echo ${{ secrets.NDFC_IP }}
 
       - name: var test
         run: echo ${{ vars.NDFC_IP_VAR }}
+
+      - name: env secret
+        env:
+          SUPER_SECRET: ${{ secrets.NDFC_IP }}
+        run: echo "$env:SUPER_SECRET"
+
+      - name: env var
+        env:
+          TEST_VAR: ${{ vars.NDFC_IP_VAR }}
+        run: echo "$env:TEST_VAR"
+
+      - name: env
+        run: env
 
       - name: list contents
         run: ls 
