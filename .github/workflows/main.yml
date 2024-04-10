@@ -116,8 +116,8 @@ jobs:
       
       - name: list contents
         run: |
-          ll
-          cd .. && ll
+          ls
+          cd .. && ls
 
       - name: Install dependencies
         run: |
