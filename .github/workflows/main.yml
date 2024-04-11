@@ -166,7 +166,7 @@ jobs:
           NDFC_HOST: ${{ secrets.NDFC_HOST }}
           NDFC_USER: ${{ secrets.NDFC_USER }}
           NDFC_PASS: ${{ secrets.NDFC_PASS }}
-        run: ansible-playbook -i ansible-dc-vxlan-example/inventory.yml ansible-dc-vxlan-example/vxlan.yml
+        run: ansible-playbook -i ansible-dc-vxlan-example/inventory.yml ansible-dc-vxlan-example/vxlan.yml -vvv
 
       # - name: Build a nac-dc-vxlan collection tarball
       #   run: ansible-galaxy collection build
