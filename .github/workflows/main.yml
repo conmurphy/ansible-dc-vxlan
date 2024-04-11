@@ -110,11 +110,11 @@ jobs:
       - name: mkdir for Example Repo
         run: mkdir -p /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
-      - name: Checkout pwd
-        run: pwd
+      # - name: Checkout pwd
+      #   run: pwd
 
-      - name: Checkout dir
-        run: ls -altnr
+      # - name: Checkout dir
+      #   run: ls -altnr
 
       # - name: secret test
       #   run: echo ${{ secrets.NDFC_IP }}
@@ -149,14 +149,14 @@ jobs:
       - name: Install supporting collections
         run: ansible-galaxy collection install -r ansible-dc-vxlan-example/requirements.yml
 
-      - name: Checkout pwd
-        run: pwd
+      # - name: Checkout pwd
+      #   run: pwd
 
-      - name: Checkout dir
-        run: ls -altnr
+      # - name: Checkout dir
+      #   run: ls -altnr
       
-      - name: Checkout Example dir
-        run: ls -altnr /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
+      # - name: Checkout Example dir
+      #   run: ls -altnr /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
       - name: Check Ansible Collection List
         run: ansible-galaxy collection list
