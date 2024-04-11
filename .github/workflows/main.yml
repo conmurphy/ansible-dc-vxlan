@@ -158,5 +158,15 @@ jobs:
       - name: Checkout Example dir
         run: ls -altnr /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
+      - name: Check Ansible Collection List
+        run: ansible-galaxy collection list
+      
+      - name: Run playbook
+        env:
+          NDFC_HOST: ${{ secrets.NDFC_HOST }}
+          NDFC_USER: ${{ secrets.NDFC_USER }}
+          NDFC_PASS: ${{ secrets.NDFC_PASS }}
+        run: ansible-playbook -i ansible-dc-vxlan-example/inventory.yml ansible-dc-vxlan-example/vxlan.yml
+
       # - name: Build a nac-dc-vxlan collection tarball
       #   run: ansible-galaxy collection build
