@@ -171,6 +171,7 @@ jobs:
 
       - name: Run playbook
         env:
+          NDFC_HOST_VAR: ${{ vars.NDFC_HOST_VAR }}
           NDFC_HOST: ${{ secrets.NDFC_HOST }}
           NDFC_USER: ${{ secrets.NDFC_USER }}
           NDFC_PASS: ${{ secrets.NDFC_PASS }}
