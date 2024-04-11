@@ -160,7 +160,7 @@ jobs:
 
       - name: Check Ansible Collection List
         run: ansible-galaxy collection list
-      
+
       - name: Check my IP
         run: curl ifconfig.me
 
