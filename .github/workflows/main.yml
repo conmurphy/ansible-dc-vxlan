@@ -130,8 +130,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build a nac-dc-vxlan collection tarball
-        run: ansible-galaxy collection build
-
       - name: Checkout
-        run: ls
+        run: ls -altnr
+
+      # - name: Build a nac-dc-vxlan collection tarball
+      #   run: ansible-galaxy collection build
