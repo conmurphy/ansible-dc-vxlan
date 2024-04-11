@@ -131,7 +131,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build a nac-dc-vxlan collection tarball
-        run: ansible-galaxy collection build cisco/nac_dc_vxlan
+        run: ansible-galaxy collection build
 
       - name: Checkout
         run: ls
