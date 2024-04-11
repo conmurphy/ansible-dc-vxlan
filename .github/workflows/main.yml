@@ -163,7 +163,7 @@ jobs:
       
       - name: Test Connection to NDFC
         env:
-          NDFC_HOST: ${{ secrets.NDFC_IP }}
+          NDFC_HOST: ${{ secrets.NDFC_HOST }}
         run: curl --insecure -I https://"$NDFC_HOST"
 
       # - name: Run playbook
