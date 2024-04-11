@@ -164,17 +164,17 @@ jobs:
       - name: Check my IP
         run: curl ifconfig.me
 
-      - name: Test Connection to NDFC
-        env:
-          NDFC_HOST: ${{ secrets.NDFC_HOST }}
-        run: curl --insecure -I https://"$NDFC_HOST"
+      # - name: Test Connection to NDFC
+      #   env:
+      #     NDFC_HOST: ${{ secrets.NDFC_HOST }}
+      #   run: curl --insecure -I https://"$NDFC_HOST"
 
       - name: Run playbook
-        env:
-          NDFC_HOST_VAR: ${{ vars.NDFC_HOST_VAR }}
-          NDFC_HOST: ${{ secrets.NDFC_HOST }}
-          NDFC_USER: ${{ secrets.NDFC_USER }}
-          NDFC_PASS: ${{ secrets.NDFC_PASS }}
+        # env:
+        #   NDFC_HOST_VAR: ${{ vars.NDFC_HOST_VAR }}
+        #   NDFC_HOST: ${{ secrets.NDFC_HOST }}
+        #   NDFC_USER: ${{ secrets.NDFC_USER }}
+        #   NDFC_PASS: ${{ secrets.NDFC_PASS }}
         run: ansible-playbook -i ansible-dc-vxlan-example/inventory.yml ansible-dc-vxlan-example/vxlan.yml -vvv
 
       # - name: Build a nac-dc-vxlan collection tarball
