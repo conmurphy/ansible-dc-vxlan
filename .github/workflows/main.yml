@@ -99,67 +99,67 @@ jobs:
     # needs:
     #   - build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # ansible: [2.10.17, 2.11.12, 2.12.10, 2.13.13, 2.14.15, 2.16.5]
-        ansible: [2.16.5]
-        python: ['3.10']
+    # strategy:
+    #   matrix:
+    #     # ansible: [2.10.17, 2.11.12, 2.12.10, 2.13.13, 2.14.15, 2.16.5]
+    #     ansible: [2.16.5]
+    #     python: ['3.10']
     steps:
-      # - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # - name: mkdir for Example Repo
-      #   run: mkdir -p /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
+      - name: mkdir for Example Repo
+        run: mkdir -p /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
-      # # - name: Checkout pwd
-      # #   run: pwd
+      # - name: Checkout pwd
+      #   run: pwd
 
-      # # - name: Checkout dir
-      # #   run: ls -altnr
+      # - name: Checkout dir
+      #   run: ls -altnr
 
-      # # - name: secret test
-      # #   run: echo ${{ secrets.NDFC_IP }}
+      # - name: secret test
+      #   run: echo ${{ secrets.NDFC_IP }}
 
-      # # - name: var test
-      # #   run: echo ${{ vars.NDFC_IP_VAR }}
+      # - name: var test
+      #   run: echo ${{ vars.NDFC_IP_VAR }}
 
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-      # - name: Build a nac-dc-vxlan collection tarball
-      #   run: ansible-galaxy collection build
+      - name: Build a nac-dc-vxlan collection tarball
+        run: ansible-galaxy collection build
 
-      # - name: Checkout Example Repo
-      #   uses: actions/checkout@v4
-      #   with:
-      #     repository: netascode/ansible-dc-vxlan-example
-      #     ref: example_data
-      #     token: ${{ secrets.MTARKING_GH_PAT }}
-      #     path: /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
+      - name: Checkout Example Repo
+        uses: actions/checkout@v4
+        with:
+          repository: netascode/ansible-dc-vxlan-example
+          ref: example_data
+          token: ${{ secrets.MTARKING_GH_PAT }}
+          path: /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
-      # - name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -r ansible-dc-vxlan-example/requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ansible-dc-vxlan-example/requirements.txt
 
-      # - name: Install the collection tarball
-      #   run: ansible-galaxy collection install cisco-nac_dc_vxlan-0.1.0.tar.gz
+      - name: Install the collection tarball
+        run: ansible-galaxy collection install cisco-nac_dc_vxlan-0.1.0.tar.gz
       
-      # - name: Install supporting collections
-      #   run: ansible-galaxy collection install -r ansible-dc-vxlan-example/requirements.yml
+      - name: Install supporting collections
+        run: ansible-galaxy collection install -r ansible-dc-vxlan-example/requirements.yml
 
-      # # - name: Checkout pwd
-      # #   run: pwd
+      # - name: Checkout pwd
+      #   run: pwd
 
-      # # - name: Checkout dir
-      # #   run: ls -altnr
+      # - name: Checkout dir
+      #   run: ls -altnr
       
-      # # - name: Checkout Example dir
-      # #   run: ls -altnr /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
+      # - name: Checkout Example dir
+      #   run: ls -altnr /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
-      # - name: Check Ansible Collection List
-      #   run: ansible-galaxy collection list
+      - name: Check Ansible Collection List
+        run: ansible-galaxy collection list
       
       - name: Check my IP
         run: curl ifconfig.me
@@ -169,12 +169,12 @@ jobs:
           NDFC_HOST: ${{ secrets.NDFC_HOST }}
         run: curl --insecure -I https://"$NDFC_HOST"
 
-      # - name: Run playbook
-      #   env:
-      #     NDFC_HOST: ${{ secrets.NDFC_HOST }}
-      #     NDFC_USER: ${{ secrets.NDFC_USER }}
-      #     NDFC_PASS: ${{ secrets.NDFC_PASS }}
-      #   run: ansible-playbook -i ansible-dc-vxlan-example/inventory.yml ansible-dc-vxlan-example/vxlan.yml -vvv
+      - name: Run playbook
+        env:
+          NDFC_HOST: ${{ secrets.NDFC_HOST }}
+          NDFC_USER: ${{ secrets.NDFC_USER }}
+          NDFC_PASS: ${{ secrets.NDFC_PASS }}
+        run: ansible-playbook -i ansible-dc-vxlan-example/inventory.yml ansible-dc-vxlan-example/vxlan.yml -vvv
 
       # - name: Build a nac-dc-vxlan collection tarball
       #   run: ansible-galaxy collection build
