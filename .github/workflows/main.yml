@@ -107,6 +107,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: mkdir for Example Repo
+        run: mkdir -p /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
+
       - name: Checkout pwd
         run: pwd
 
@@ -133,6 +136,7 @@ jobs:
           repository: netascode/ansible-dc-vxlan-example
           ref: example_data
           token: ${{ secrets.MTARKING_GH_PAT }}
+          path: /home/runner/work/ansible-dc-vxlan/ansible-dc-vxlan/ansible-dc-vxlan-example
 
       - name: Install dependencies
         run: |
