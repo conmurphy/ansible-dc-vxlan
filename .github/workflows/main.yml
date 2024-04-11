@@ -107,72 +107,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: secret test
-        run: echo ${{ secrets.NDFC_IP }}
+      # - name: secret test
+      #   run: echo ${{ secrets.NDFC_IP }}
 
-      - name: var test
-        run: echo ${{ vars.NDFC_IP_VAR }}
-
-      - name: env secret
-        env:
-          SUPER_SECRET1: ${{ secrets.NDFC_IP }}
-        run: echo 'Hi ${{ env.SUPER_SECRET1 }}'
-
-      - name: env secret
-        env:
-          SUPER_SECRET2: ${{ secrets.NDFC_IP }}
-        run: echo "$SUPER_SECRET2"
-
-      - name: env secret
-        run: export SUPER_SECRET3=${{ secrets.NDFC_IP }}
-
-      - name: env var
-        env:
-          TEST_VAR1: ${{ vars.NDFC_IP_VAR }}
-        run: echo "$TEST_VAR1"
-      
-      - name: env var
-        env:
-          TEST_VAR2: ${{ vars.NDFC_IP_VAR }}
-        run: echo 'Hi ${{ env.TEST_VAR2 }}'
-
-      - name: env var
-        run: export TEST_VAR3=${{ vars.NDFC_IP_VAR }}
-
-      - name: env
-        run: env
-
-      - name: list contents
-        run: ls 
-      
-      - name: list contents
-        run: ls /
+      # - name: var test
+      #   run: echo ${{ vars.NDFC_IP_VAR }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: pwd
-        run: |
-          pwd
+      - name: Checkout Example Repo
+        uses: actions/checkout@v4
+        with:
+          repository: netascode/ansible-dc-vxlan-example
+          ref: example_data
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ansible-core==2.16.5
+          pip install -r requirements.txt
 
-      - name: Download migrated collection artifacts
-        uses: actions/download-artifact@v1
-        with:
-          name: collection
-          path: .cache/collection-tarballs
+      - name: Build a nac-dc-vxlan collection tarball
+        run: ansible-galaxy collection build cisco/nac_dc_vxlan
 
-      - name: Install the collection tarball
-        run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
-
-      - name: list contents
-        run: ls /home/runner/.ansible/
-
-      - name: list contents
-        run: ls /home/runner/.ansible/collections/ansible_collections/cisco
+      - name: Checkout
+        run: ls
