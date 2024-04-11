@@ -107,7 +107,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Checkout
+      - name: Checkout pwd
+        run: pwd
+
+      - name: Checkout dir
         run: ls -altnr
 
       # - name: secret test
@@ -121,6 +124,9 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Build a nac-dc-vxlan collection tarball
+        run: ansible-galaxy collection build
+
       - name: Checkout Example Repo
         uses: actions/checkout@v4
         with:
@@ -133,7 +139,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Checkout
+      - name: Checkout pwd
+        run: pwd
+
+      - name: Checkout dir
         run: ls -altnr
 
       # - name: Build a nac-dc-vxlan collection tarball
