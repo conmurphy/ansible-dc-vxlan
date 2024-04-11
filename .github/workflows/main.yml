@@ -107,6 +107,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout
+        run: ls -altnr
+
       # - name: secret test
       #   run: echo ${{ secrets.NDFC_IP }}
 
