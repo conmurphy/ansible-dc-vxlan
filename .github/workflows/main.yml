@@ -123,6 +123,7 @@ jobs:
         with:
           repository: netascode/ansible-dc-vxlan-example
           ref: example_data
+          token: ${{ secrets.MTARKING_GH_PAT }}
 
       - name: Install dependencies
         run: |
